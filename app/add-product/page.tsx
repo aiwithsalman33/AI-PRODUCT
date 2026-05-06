@@ -85,12 +85,15 @@ export default function AddProductPage() {
     <LayoutWrapper title="Add Product" subtitle="Submit a new product for AI content generation">
       {isLoading && <LoadingSpinner fullScreen text="Submitting product..." />}
 
-      <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-8">
+      <div className="max-w-2xl mx-auto relative mt-8 z-10">
+        {/* Ambient Glow */}
+        <div className="absolute -inset-1 bg-gradient-to-r from-fuchsia-600 to-indigo-600 rounded-[2rem] blur opacity-20"></div>
+        
+        <div className="glass-dark rounded-2xl border border-white/10 shadow-2xl p-8 relative overflow-hidden backdrop-blur-2xl">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Product Name */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-slate-900 mb-2">
+              <label htmlFor="name" className="block text-xs font-bold text-slate-300 uppercase tracking-widest mb-2">
                 Product Name *
               </label>
               <input
@@ -100,14 +103,14 @@ export default function AddProductPage() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="e.g., Premium Wireless Headphones"
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all duration-300 shadow-inner"
                 required
               />
             </div>
 
             {/* Features */}
             <div>
-              <label htmlFor="features" className="block text-sm font-medium text-slate-900 mb-2">
+              <label htmlFor="features" className="block text-xs font-bold text-slate-300 uppercase tracking-widest mb-2">
                 Features *
               </label>
               <textarea
@@ -117,21 +120,21 @@ export default function AddProductPage() {
                 onChange={handleChange}
                 placeholder="Describe the key features of your product. Be specific and detailed..."
                 rows={6}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 resize-none transition-all duration-300 shadow-inner"
                 required
               />
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-2 text-xs text-slate-400 font-medium tracking-wide">
                 The AI will use this to generate product descriptions
               </p>
             </div>
 
             {/* Price */}
             <div>
-              <label htmlFor="price" className="block text-sm font-medium text-slate-900 mb-2">
+              <label htmlFor="price" className="block text-xs font-bold text-slate-300 uppercase tracking-widest mb-2">
                 Price (USD) *
               </label>
               <div className="relative">
-                <span className="absolute left-4 top-2 text-slate-500">$</span>
+                <span className="absolute left-4 top-3 text-slate-400 font-bold">$</span>
                 <input
                   type="number"
                   id="price"
@@ -141,7 +144,7 @@ export default function AddProductPage() {
                   placeholder="0.00"
                   min="0"
                   step="0.01"
-                  className="w-full pl-8 pr-4 py-2 border border-slate-300 rounded-lg text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                  className="w-full pl-8 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all duration-300 shadow-inner"
                   required
                 />
               </div>
@@ -149,7 +152,7 @@ export default function AddProductPage() {
 
             {/* Category */}
             <div>
-              <label htmlFor="category" className="block text-sm font-medium text-slate-900 mb-2">
+              <label htmlFor="category" className="block text-xs font-bold text-slate-300 uppercase tracking-widest mb-2">
                 Category *
               </label>
               <select
@@ -157,7 +160,7 @@ export default function AddProductPage() {
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all duration-300 shadow-inner appearance-none [&>option]:bg-slate-900"
                 required
               >
                 <option value="">Select a category</option>
@@ -170,18 +173,20 @@ export default function AddProductPage() {
             </div>
 
             {/* Info Box */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <p className="text-sm text-blue-800">
-                <strong>Note:</strong> Your product will be submitted to our n8n automation workflow for AI content generation. You'll be able to track the status in the Products page.
+            <div className="glass-dark border border-indigo-500/30 rounded-xl p-5 relative overflow-hidden">
+              <div className="absolute inset-0 bg-indigo-500/10"></div>
+              <p className="text-sm text-indigo-200 relative z-10 leading-relaxed">
+                <strong className="text-indigo-400 tracking-wide uppercase text-xs mr-2 drop-shadow-md">Note:</strong> 
+                Your product will be submitted to our n8n automation workflow for AI content generation. You'll be able to track the status in the Products page.
               </p>
             </div>
 
             {/* Buttons */}
-            <div className="flex gap-3 pt-4">
+            <div className="flex gap-4 pt-6">
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex-1 px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white rounded-lg font-medium transition-colors"
+                className="flex-1 px-6 py-3 bg-gradient-primary hover:shadow-[0_0_20px_rgba(192,38,211,0.4)] disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl font-extrabold tracking-wide transition-all duration-300 border border-white/10 hover:-translate-y-1"
               >
                 {isLoading ? 'Submitting...' : 'Submit Product'}
               </button>
@@ -189,7 +194,7 @@ export default function AddProductPage() {
                 type="button"
                 onClick={handleReset}
                 disabled={isLoading}
-                className="flex-1 px-6 py-2 bg-slate-200 hover:bg-slate-300 disabled:bg-slate-100 text-slate-900 rounded-lg font-medium transition-colors"
+                className="flex-1 px-6 py-3 glass-dark hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed text-slate-300 hover:text-white border border-white/10 rounded-xl font-bold tracking-wide transition-all duration-300"
               >
                 Reset Form
               </button>

@@ -3,17 +3,17 @@ import { ProductStatus } from './types';
 export function getStatusColor(status: ProductStatus): string {
   switch (status) {
     case 'received':
-      return 'bg-gray-100 text-gray-800';
+      return 'bg-slate-800 text-slate-300 border border-slate-700 shadow-[0_0_10px_rgba(148,163,184,0.2)]';
     case 'pending_approval':
-      return 'bg-yellow-100 text-yellow-800';
+      return 'bg-amber-900/40 text-amber-300 border border-amber-700/50 shadow-[0_0_10px_rgba(245,158,11,0.3)]';
     case 'published':
-      return 'bg-green-100 text-green-800';
+      return 'bg-emerald-900/40 text-emerald-300 border border-emerald-700/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]';
     case 'rejected':
-      return 'bg-red-100 text-red-800';
+      return 'bg-rose-900/40 text-rose-300 border border-rose-700/50 shadow-[0_0_10px_rgba(244,63,94,0.3)]';
     case 'failed':
-      return 'bg-red-900 text-red-100';
+      return 'bg-red-900/60 text-red-300 border border-red-700/60 shadow-[0_0_10px_rgba(220,38,38,0.4)]';
     default:
-      return 'bg-gray-100 text-gray-800';
+      return 'bg-slate-800 text-slate-300 border border-slate-700 shadow-[0_0_10px_rgba(148,163,184,0.2)]';
   }
 }
 

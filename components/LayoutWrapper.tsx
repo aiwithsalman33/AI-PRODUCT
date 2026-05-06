@@ -12,7 +12,7 @@ interface LayoutWrapperProps {
 
 export function LayoutWrapper({ children, title, subtitle }: LayoutWrapperProps) {
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#030014] text-slate-200">
       <Sidebar />
       <Navbar title={title} subtitle={subtitle} />
       <main className="ml-64 pt-28 pb-8 px-8">

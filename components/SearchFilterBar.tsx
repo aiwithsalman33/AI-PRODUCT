@@ -34,17 +34,17 @@ export function SearchFilterBar({
   showStatusFilter = true,
 }: SearchFilterBarProps) {
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+    <div className="glass-dark rounded-xl border border-white/10 p-4 shadow-xl backdrop-blur-xl">
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
         {/* Search Input */}
         <div className="flex-1">
-          <input
-            type="text"
-            placeholder="Search by product name..."
-            value={searchValue}
-            onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-          />
+            <input
+              type="text"
+              placeholder="Search by product name..."
+              value={searchValue}
+              onChange={(e) => onSearchChange(e.target.value)}
+              className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all shadow-inner"
+            />
         </div>
 
         {/* Category Filter */}
@@ -52,7 +52,7 @@ export function SearchFilterBar({
           <select
             value={selectedCategory}
             onChange={(e) => onCategoryChange(e.target.value)}
-            className="px-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all appearance-none [&>option]:bg-slate-900"
           >
             <option value="">All Categories</option>
             {CATEGORIES.map((category) => (
@@ -68,7 +68,7 @@ export function SearchFilterBar({
           <select
             value={selectedStatus}
             onChange={(e) => onStatusChange(e.target.value)}
-            className="px-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 transition-all appearance-none [&>option]:bg-slate-900"
           >
             {statuses.map((status) => (
               <option key={status.value} value={status.value}>

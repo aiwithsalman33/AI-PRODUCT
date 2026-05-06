@@ -34,57 +34,58 @@ export function ProductTable({
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+    <div className="overflow-x-auto rounded-2xl glass-dark border border-white/5 shadow-2xl">
       <table className="w-full">
-        <thead className="bg-slate-50 border-b border-slate-200">
+        <thead className="bg-white/5 border-b border-white/10">
           <tr>
-            <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">
+            <th className="px-6 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-widest">
               Product Name
             </th>
-            <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">
+            <th className="px-6 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-widest">
               Category
             </th>
-            <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">
+            <th className="px-6 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-widest">
               Price
             </th>
-            <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">
+            <th className="px-6 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-widest">
               Status
             </th>
-            <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">
+            <th className="px-6 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-widest">
               Created At
             </th>
-            <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">
+            <th className="px-6 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-widest">
               Action
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-slate-200">
-          {products.map((product) => (
+        <tbody className="divide-y divide-white/5">
+          {products.map((product, index) => (
             <tr
               key={product.id}
-              className="hover:bg-slate-50 transition-colors"
+              className="hover:bg-white/5 transition-colors duration-200"
+              style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <td className="px-6 py-4 text-sm font-medium text-slate-900">
+              <td className="px-6 py-4 text-sm font-semibold text-slate-200">
                 {truncateText(product.name, 50)}
               </td>
-              <td className="px-6 py-4 text-sm text-slate-600">
+              <td className="px-6 py-4 text-sm text-slate-400 font-medium">
                 {product.category}
               </td>
-              <td className="px-6 py-4 text-sm font-medium text-slate-900">
+              <td className="px-6 py-4 text-sm font-bold text-emerald-400 drop-shadow-md">
                 ${product.price.toFixed(2)}
               </td>
               <td className="px-6 py-4">
                 <StatusBadge status={product.status} />
               </td>
-              <td className="px-6 py-4 text-sm text-slate-600">
+              <td className="px-6 py-4 text-sm text-slate-500">
                 {formatDate(product.createdAt)}
               </td>
               <td className="px-6 py-4">
                 <Link
                   href={`/products/${product.id}`}
-                  className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                  className="text-fuchsia-400 hover:text-fuchsia-300 text-sm font-bold transition-colors duration-200 hover:underline tracking-wide"
                 >
-                  View Details
+                  View Details →
                 </Link>
               </td>
             </tr>
