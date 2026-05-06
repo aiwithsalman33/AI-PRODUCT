@@ -3,6 +3,8 @@
  * All requests are sent to the Apps Script endpoint defined in NEXT_PUBLIC_API_BASE_URL
  */
 
+import { Product, DashboardStats } from './types';
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 if (!API_BASE_URL) {
@@ -72,8 +74,8 @@ export async function addProduct(productData: {
   features: string;
   price: number;
   category: string;
-}) {
-  return apiCall('POST', {
+}): Promise<ApiResponse<any>> {
+  return apiCall<any>('POST', {
     action: 'add_product',
     ...productData,
   });
@@ -82,8 +84,8 @@ export async function addProduct(productData: {
 /**
  * Get all products
  */
-export async function getProducts() {
-  return apiCall('GET', {
+export async function getProducts(): Promise<ApiResponse<Product[]>> {
+  return apiCall<Product[]>('GET', {
     action: 'get_products',
   });
 }
@@ -91,8 +93,8 @@ export async function getProducts() {
 /**
  * Get a single product by ID
  */
-export async function getProductById(id: string) {
-  return apiCall('GET', {
+export async function getProductById(id: string): Promise<ApiResponse<Product>> {
+  return apiCall<Product>('GET', {
     action: 'get_product',
     id,
   });
@@ -101,8 +103,8 @@ export async function getProductById(id: string) {
 /**
  * Get dashboard statistics
  */
-export async function getDashboardStats() {
-  return apiCall('GET', {
+export async function getDashboardStats(): Promise<ApiResponse<DashboardStats>> {
+  return apiCall<DashboardStats>('GET', {
     action: 'get_dashboard_stats',
   });
 }
